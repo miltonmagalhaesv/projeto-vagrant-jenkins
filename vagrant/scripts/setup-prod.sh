@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Reutiliza o provisionamento de Node.js para manter as duas VMs na mesma versão.
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-bash "${SCRIPT_DIR}/setup-node.sh"
+apt-get update
+apt-get install -y curl ca-certificates
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt-get install -y nodejs
 
 APP_DIR="/opt/app"
 
